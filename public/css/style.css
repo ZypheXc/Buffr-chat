@@ -1,0 +1,220 @@
+:root {
+  /* Brand Colors */
+  --Buffrchat-brand: #c0ec58;
+  --Buffrchat-brand-hover: #749721;
+  --Buffrchat-green: #23A55A;
+  --Buffrchat-yellow: #F0B232;
+  --Buffrchat-red: #F23F43;
+  --Buffrchat-link: #00A8FC;
+
+  /* Dark Theme Palette */
+  --background-primary: #313338;
+  --background-secondary: #2B2D31;
+  --background-secondary-alt: #242528;
+  --background-tertiary: #1E1F22;
+  --background-accent: #35373C;
+  --background-floating: #111214;
+  
+  /* Text Colors */
+  --text-normal: #DBDEE1;
+  --text-muted: #949BA4;
+  --text-link: #00A8FC;
+  --text-positive: #23A55A;
+  --text-warning: #FAA81A;
+  --text-danger: #FA777C;
+  --text-brand: #5865F2;
+  --header-primary: #F2F3F5;
+  --header-secondary: #B5BAC1;
+
+  /* Interactive States */
+  --interactive-normal: #B5BAC1;
+  --interactive-hover: #DEE1E6;
+  --interactive-active: #FFFFFF;
+  --interactive-muted: #4E5058;
+
+  /* Typography */
+  --font-sans: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "ABC Ginto Nord", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-code: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+/* Base Reset & Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--header-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: -0.02em; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  color: var(--text-normal);
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Interactive Components */
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-brand {
+  background-color: var(--Buffrchat-brand);
+  color: #FFFFFF;
+}
+.btn-brand:hover {
+  background-color: var(--Buffrchat-brand-hover);
+}
+
+.btn-light {
+  background-color: #FFFFFF;
+  color: #23272A;
+}
+.btn-light:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.btn-dark {
+  background-color: var(--background-tertiary);
+  color: #FFFFFF;
+}
+.btn-dark:hover {
+  background-color: var(--background-secondary-alt);
+}
+
+/* Custom Containers & Layout Structures */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-section {
+  background-color: var(--background-tertiary);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 24px;
+  color: var(--header-primary);
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  max-width: 780px;
+  margin: 0 auto 32px;
+  color: var(--text-normal);
+}
+
+.flex-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* UI Panel Components (App Interface Simulation) */
+.Buffrchat-panel {
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Buffrchat-sidebar {
+  background-color: var(--background-tertiary);
+  width: 240px;
+  padding: 16px;
+}
+
+/* Form Elements */
+.form-item {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--background-floating);
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 4px;
+  color: var(--text-normal);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--Buffrchat-brand);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background-secondary-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--background-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--background-accent);
+}

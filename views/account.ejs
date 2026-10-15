@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buffrchat | <%= pageTitle %></title>
+    <style>
+        :root {
+          /* Brand Colors */
+          --Buffrchat-brand: #c0ec58;
+          --Buffrchat-brand-hover: #749721;
+          --Buffrchat-green: #23A55A;
+          --Buffrchat-yellow: #F0B232;
+          --Buffrchat-red: #F23F43;
+          --Buffrchat-link: #00A8FC;
+
+          /* Dark Theme Palette */
+          --background-primary: #313338;
+          --background-secondary: #2B2D31;
+          --background-secondary-alt: #242528;
+          --background-tertiary: #1E1F22;
+          --background-accent: #35373C;
+          --background-floating: #111214;
+          
+          /* Text Colors */
+          --text-normal: #DBDEE1;
+          --text-muted: #949BA4;
+          --text-link: #00A8FC;
+          --text-positive: #23A55A;
+          --text-warning: #FAA81A;
+          --text-danger: #FA777C;
+          --text-brand: #5865F2;
+          --header-primary: #F2F3F5;
+          --header-secondary: #B5BAC1;
+
+          /* Interactive States */
+          --interactive-normal: #B5BAC1;
+          --interactive-hover: #DEE1E6;
+          --interactive-active: #FFFFFF;
+          --interactive-muted: #4E5058;
+
+          /* Typography */
+          --font-sans: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          --font-display: "ABC Ginto Nord", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          --font-code: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+        }
+
+        /* Base Reset & Styling */
+        *, *::before, *::after {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: var(--font-sans);
+          background-color: var(--background-primary);
+          color: var(--text-normal);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231E1F22" width="100" height="100"/><circle fill="%23242528" cx="50" cy="50" r="2"/></svg>');
+        }
+
+        .auth-container {
+          background-color: var(--background-secondary);
+          padding: 32px;
+          border-radius: 8px;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+          width: 100%;
+          max-width: 480px;
+        }
+
+        .auth-header {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .auth-header h1 {
+          font-family: var(--font-display);
+          color: var(--header-primary);
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+
+        .auth-header p {
+          color: var(--text-muted);
+          font-size: 14px;
+        }
+
+        .form-group {
+          margin-bottom: 20px;
+        }
+
+        .form-group label {
+          display: block;
+          color: var(--header-secondary);
+          font-size: 12px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          letter-spacing: 0.5px;
+        }
+
+        .form-group label .required {
+          color: var(--text-danger);
+          padding-left: 4px;
+        }
+
+        .form-input {
+          width: 100%;
+          padding: 10px;
+          background-color: var(--background-tertiary);
+          border: 1px solid transparent;
+          border-radius: 4px;
+          color: var(--text-normal);
+          font-family: var(--font-sans);
+          font-size: 16px;
+          transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus {
+          outline: none;
+          border-color: var(--Buffrchat-brand);
+        }
+
+        .error-banner {
+          background-color: rgba(242, 63, 67, 0.1);
+          border: 1px solid var(--Buffrchat-red);
+          color: var(--text-danger);
+          padding: 10px;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+        }
+
+        .auth-btn {
+          width: 100%;
+          padding: 12px;
+          background-color: var(--Buffrchat-brand);
+          color: var(--background-floating);
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+          margin-bottom: 12px;
+        }
+
+        .auth-btn:hover {
+          background-color: var(--Buffrchat-brand-hover);
+          color: var(--header-primary);
+        }
+
+        .auth-footer {
+          font-size: 14px;
+          color: var(--text-muted);
+          margin-top: 4px;
+        }
+
+        .auth-link {
+          color: var(--text-link);
+          text-decoration: none;
+        }
+
+        .auth-link:hover {
+          text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <% if (locals.isRegisterPage) { %>
+                <h1>Create an account</h1>
+                <p>Join Buffrchat today!</p>
+            <% } else { %>
+                <h1>Welcome back!</h1>
+                <p>We're so excited to see you again!</p>
+            <% } %>
+        </div>
+
+        <% if (locals.errorMessage) { %>
+            <div class="error-banner">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+
+        <form action="<%= locals.isRegisterPage ? '/register' : '/login' %>" method="POST">
+            
+            <% if (locals.isRegisterPage) { %>
+                <div class="form-group">
+                    <label for="email">Email<span class="required">*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" required autocomplete="email">
+                </div>
+            <% } %>
+
+            <div class="form-group">
+                <label for="username">Username<span class="required">*</span></label>
+                <input type="text" id="username" name="username" class="form-input" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password<span class="required">*</span></label>
+                <input type="password" id="password" name="password" class="form-input" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="auth-btn">
+                <%= locals.isRegisterPage ? 'Continue' : 'Log In' %>
+            </button>
+
+            <div class="auth-footer">
+                <% if (locals.isRegisterPage) { %>
+                    Already have an account? <a href="/login" class="auth-link">Already have an account?</a>
+                <% } else { %>
+                    Need an account? <a href="/register" class="auth-link">Register</a>
+                <% } %>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
